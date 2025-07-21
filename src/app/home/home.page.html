@@ -1,20 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Tính Calo thức ăn
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-text-center ion-padding">
+    <h1 class="ion-text-center ion-padding">
+      <ion-text color="primary">
+        <strong>Chụp ảnh món ăn của bạn</strong>
+      </ion-text>
+    </h1>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-button expand="block" (click)="takePicture()" [disabled]="isLoading">
+      <ion-icon slot="start" name="camera"></ion-icon>
+      {{ selectedImageFile ? 'Chụp lại ảnh' : 'Chụp ảnh' }}
+    </ion-button>
+
+    <div *ngIf="imagePreviewUrl" class="ion-margin-top">
+      <h2>Xem trước hình ảnh:</h2>
+      <img [src]="imagePreviewUrl" alt="Xem trước món ăn" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+    </div>
+
+    <ion-button expand="block" (click)="analyzeFood()" [disabled]="!selectedImageFile || isLoading" class="ion-margin-top">
+      <ion-icon slot="start" name="nutrition"></ion-icon>
+      {{ isLoading ? 'Đang phân tích...' : 'Phân tích Calo' }}
+    </ion-button>
+
+    <ion-card *ngIf="geminiResponse" class="ion-margin-top">
+      <ion-card-header>
+        <ion-card-title>Kết quả phân tích:</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ geminiResponse }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <div *ngIf="isLoading" class="ion-text-center ion-margin-top">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Đang tải...</p>
+    </div>
   </div>
 </ion-content>

@@ -1,27 +1,97 @@
-#container {
-  text-align: center;
+ion-header {
+  ion-toolbar {
+    --background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    --border-width: 0;
+  }
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  ion-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+ion-content {
+  --background: linear-gradient(to bottom right, #e0f2f7, #bbdefb);
+  font-family: 'Inter', sans-serif;
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+  h1 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
 
-  color: #8c8c8c;
+  ion-button {
+    --background: linear-gradient(to right, #4CAF50, #8BC34A);
+    --background-activated: linear-gradient(to right, #45a049, #7cb342);
+    --background-hover: linear-gradient(to right, #5cb85c, #9ccc65);
+    --border-radius: 10px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 15px 20px;
+    height: auto;
+    transition: all 0.3s ease-in-out;
 
-  margin: 0;
-}
+    &:hover {
+      transform: translateY(-2px);
+      --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
 
-#container a {
-  text-decoration: none;
+    &[disabled] {
+      --background: #cccccc;
+      --background-activated: #cccccc;
+      --background-hover: #cccccc;
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+      --box-shadow: none;
+    }
+  }
+
+  img {
+    border: 2px solid #ddd;
+    padding: 5px;
+    background-color: #fff;
+  }
+
+  ion-card {
+    --background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 15px;
+
+    ion-card-header {
+      padding-bottom: 10px;
+    }
+
+    ion-card-title {
+      color: #3f51b5;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    ion-card-content {
+      color: #555;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+  }
+
+  ion-spinner {
+    color: #3f51b5;
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  p {
+    color: #666;
+    font-size: 0.95em;
+  }
 }
